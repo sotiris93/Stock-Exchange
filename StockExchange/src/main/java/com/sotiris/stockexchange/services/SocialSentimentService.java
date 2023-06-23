@@ -1,6 +1,8 @@
 package com.sotiris.stockexchange.services;
 
+import com.sotiris.stockexchange.dtos.finnhub.social_sentiment.RedditDTO;
 import com.sotiris.stockexchange.dtos.finnhub.social_sentiment.SocialSentimentResponseDTO;
+import com.sotiris.stockexchange.dtos.finnhub.social_sentiment.TwitterDTO;
 import com.sotiris.stockexchange.model.Reddit;
 import com.sotiris.stockexchange.model.SocialSentiment;
 import com.sotiris.stockexchange.model.Twitter;
@@ -10,6 +12,7 @@ import com.sotiris.stockexchange.repositories.TwitterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,11 +23,11 @@ public class SocialSentimentService {
     private final TwitterRepository twitterRepository;
 
     public Long createSocialSentiment(SocialSentimentResponseDTO socialSentimentResponseDTO) {
-        List<Reddit> reddits = socialSentimentResponseDTO.reddit().stream()
+        List<Reddit> reddits = socialSentimentResponseDTO.reddits().stream()
                 .map(redditDTO -> new Reddit(redditDTO.atTime(), redditDTO.mention(), redditDTO.positiveScore(), redditDTO.negativeScore(),
                         redditDTO.positiveMention(), redditDTO.negativeMention(), redditDTO.score()))
                 .toList();
-        List<Twitter> twitters = socialSentimentResponseDTO.twitter().stream()
+        List<Twitter> twitters = socialSentimentResponseDTO.twitters().stream()
                 .map(twitterDTO -> new Twitter(twitterDTO.atTime(), twitterDTO.mention(), twitterDTO.positiveScore(), twitterDTO.negativeScore(),
                         twitterDTO.positiveMention(), twitterDTO.negativeMention(), twitterDTO.score()))
                 .toList();
@@ -35,7 +38,25 @@ public class SocialSentimentService {
 
     }
 
-    public List<SocialSentiment> getSocialSentiments() {
-        return socialSentimentRepository.findAll();
+    public List<SocialSentimentResponseDTO> getSocialSentiments() {
+        List<SocialSentimentResponseDTO> socialSentimentResponseDTOS = new ArrayList<>();
+        List<SocialSentiment> socialSentiments = socialSentimentRepository.findAll();
+
+
+        for (SocialSentiment socialSentiment : socialSentiments) {
+            List<RedditDTO> redditDTOS = new ArrayList<>();
+            List<TwitterDTO> twitterDTOS = new ArrayList<>();
+
+            for (Reddit reddit : socialSentiment.getReddits()) {
+                redditDTOS.add(new RedditDTO(reddit.getAtTime(), reddit.getMention(), reddit.getPositiveScore(), reddit.getNegativeScore(), reddit.getPositiveMention(), reddit.getNegativeMention(), reddit.getScore()));
+            }
+
+            for (Twitter twitter : socialSentiment.getTwitters()) {
+                twitterDTOS.add(new TwitterDTO(twitter.getAtTime(), twitter.getMention(), twitter.getPositiveScore(), twitter.getNegativeScore(), twitter.getPositiveMention(), twitter.getNegativeMention(), twitter.getScore()));
+            }
+            socialSentimentResponseDTOS.add(new SocialSentimentResponseDTO(redditDTOS, socialSentiment.getSymbol(), twitterDTOS));
+        }
+
+        return socialSentimentResponseDTOS;
     }
 }

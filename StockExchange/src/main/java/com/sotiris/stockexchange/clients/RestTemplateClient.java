@@ -6,7 +6,7 @@ import com.sotiris.stockexchange.dtos.finnhub.companies.CompanyInfoDTO;
 import com.sotiris.stockexchange.dtos.finnhub.countries_metadata.CountriesMetadataDTO;
 import com.sotiris.stockexchange.dtos.finnhub.earnings.EarningsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.earnings.EarningsResponse;
-import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsAsReportedDTO;
+import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.market_news.MarketNewsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.patents.USPTOCompanyPatentsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.recommendation_trends.RecommendationTrendsDTO;
@@ -197,7 +197,7 @@ public class RestTemplateClient {
 
 
 
-    public FinancialsAsReportedDTO showFinancialsAsReported() {
+    public FinancialsDTO fetchFinancials() {
         String url = "https://finnhub.io/api/v1/stock/financials-reported?symbol=AAPL";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -208,11 +208,11 @@ public class RestTemplateClient {
                 .encode()
                 .toUriString();
 
-        HttpEntity<FinancialsAsReportedDTO> response = restTemplate.exchange(
+        HttpEntity<FinancialsDTO> response = restTemplate.exchange(
                 urlTemplate,
                 HttpMethod.GET,
                 entity,
-                FinancialsAsReportedDTO.class
+                FinancialsDTO.class
         );
 
         System.out.println(response.getBody());

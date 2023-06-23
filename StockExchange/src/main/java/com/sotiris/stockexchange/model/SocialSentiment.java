@@ -20,17 +20,17 @@ public class SocialSentiment {
     Long id;
 
     @OneToMany(mappedBy = "socialSentiment")
-    private List<Reddit> reddit;
+    private List<Reddit> reddits;
 
     @Column(name = "`symbol`")
     private String symbol;
 
     @OneToMany(mappedBy = "socialSentiment")
-    private List<Twitter> twitter;
+    private List<Twitter> twitters;
 
-    public SocialSentiment(List<Reddit> reddit, String symbol, List<Twitter> twitter) {
-        this.reddit = reddit;
+    public SocialSentiment(List<Reddit> reddits, String symbol, List<Twitter> twitters) {
+        this.reddits = reddits;
         this.symbol = symbol;
-        this.twitter = twitter;
+        this.twitters = twitters;
     }
 }

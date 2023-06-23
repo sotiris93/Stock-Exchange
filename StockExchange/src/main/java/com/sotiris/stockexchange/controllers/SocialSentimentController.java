@@ -1,5 +1,6 @@
 package com.sotiris.stockexchange.controllers;
 
+import com.sotiris.stockexchange.dtos.finnhub.social_sentiment.SocialSentimentResponseDTO;
 import com.sotiris.stockexchange.model.SocialSentiment;
 import com.sotiris.stockexchange.rest_services.RestSocialSentimentService;
 import com.sotiris.stockexchange.services.SocialSentimentService;
@@ -20,7 +21,7 @@ public class SocialSentimentController {
 
 
     @GetMapping
-    public ResponseEntity<List<SocialSentiment>> getAllSocialSentiments() {
+    public ResponseEntity<List<SocialSentimentResponseDTO>> getAllSocialSentiments() {
         return ResponseEntity.ok(socialSentimentService.getSocialSentiments());
     }
 

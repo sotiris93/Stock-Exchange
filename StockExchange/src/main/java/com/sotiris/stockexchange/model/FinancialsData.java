@@ -2,12 +2,14 @@ package com.sotiris.stockexchange.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "financials_data")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class FinancialsData {
 
     @Id
@@ -49,8 +51,8 @@ public class FinancialsData {
     @Column(name = "acceptedDate")
     private String acceptedDate;
 
-    public FinancialsData(String accessNumber, String symbol, String cik, int year, int quarter, String form,
-                          String startDate, String endDate, String filedDate, String acceptedDate) {
+    public FinancialsData(Financials financials, String accessNumber, String symbol, String cik, int year, int quarter, String form, String startDate, String endDate, String filedDate, String acceptedDate) {
+        this.financials = financials;
         this.accessNumber = accessNumber;
         this.symbol = symbol;
         this.cik = cik;

@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface EarningsRepository extends JpaRepository<Earnings, Long> {
 
-
+    @Query(value = "SELECT * FROM market_news WHERE source = 'CNBC'" , nativeQuery = true)
+    List<MarketNews> findCNBCNews();
 
 }

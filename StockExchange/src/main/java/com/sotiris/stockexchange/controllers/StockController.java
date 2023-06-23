@@ -3,7 +3,7 @@ package com.sotiris.stockexchange.controllers;
 import com.sotiris.stockexchange.dtos.finnhub.filings.FilingsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.countries_metadata.CountriesMetadataDTO;
 import com.sotiris.stockexchange.dtos.finnhub.earnings.EarningsDTO;
-import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsAsReportedDTO;
+import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.market_news.MarketNewsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.patents.USPTOCompanyPatentsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.recommendation_trends.RecommendationTrendsDTO;
@@ -93,7 +93,7 @@ public class StockController {
     }
 
     @GetMapping("/financials")
-    public ResponseEntity<FinancialsAsReportedDTO> getFinancials() {
+    public ResponseEntity<FinancialsDTO> getFinancials() {
         return ResponseEntity.ok(restStockService.getFinancialsAdReported());
     }
 

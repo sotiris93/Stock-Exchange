@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 public class MyUserPrincipal implements UserDetails {
-    private User user;
+    private final User user;
 
     public MyUserPrincipal(User user) {
         this.user = user;
@@ -24,27 +24,27 @@ public class MyUserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return this.user.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
     //...
 }

@@ -1,6 +1,7 @@
 package com.sotiris.stockexchange.controllers;
 
-import com.sotiris.stockexchange.model.Financials;
+import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsDTO;
+import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsDataDTO;
 import com.sotiris.stockexchange.rest_services.RestFinancialsService;
 import com.sotiris.stockexchange.services.FinancialsService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class FinancialsController {
     private final RestFinancialsService restFinancialsService;
 
     @GetMapping
-    public ResponseEntity<List<Financials>> getFinancials() {
+    public ResponseEntity<List<FinancialsDTO>> getFinancials() {
         return ResponseEntity.ok(financialsService.getFinancials());
     }
 //    @GetMapping

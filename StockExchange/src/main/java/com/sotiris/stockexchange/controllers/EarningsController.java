@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/earnings")
 public class EarningsController {
     private final EarningsService earningsService;
-    private final EarningsRepository earningsRepository;
+
 
     @GetMapping
     public ResponseEntity<List<EarningsDTO>> getEarnings() {

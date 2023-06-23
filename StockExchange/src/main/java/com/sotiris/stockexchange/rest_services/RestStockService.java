@@ -3,7 +3,7 @@ package com.sotiris.stockexchange.rest_services;
 import com.sotiris.stockexchange.clients.RestTemplateClient;
 import com.sotiris.stockexchange.dtos.finnhub.filings.FilingsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.countries_metadata.CountriesMetadataDTO;
-import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsAsReportedDTO;
+import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.market_news.MarketNewsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.patents.USPTOCompanyPatentsDTO;
 import com.sotiris.stockexchange.dtos.finnhub.recommendation_trends.RecommendationTrendsDTO;
@@ -12,7 +12,6 @@ import com.sotiris.stockexchange.dtos.finnhub.stocks.StockSymbolDTO;
 import com.sotiris.stockexchange.dtos.finnhub.transactions.InsiderTransactionsDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -132,8 +131,8 @@ public class RestStockService {
         return restTemplateClient.showInsiderTransactions();
     }
 
-    public FinancialsAsReportedDTO getFinancialsAdReported() {
-        return restTemplateClient.showFinancialsAsReported();
+    public FinancialsDTO getFinancialsAdReported() {
+        return restTemplateClient.fetchFinancials();
     }
 
     public List<FilingsDTO> getFilings() {
