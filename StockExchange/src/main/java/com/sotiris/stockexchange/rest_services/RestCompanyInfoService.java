@@ -11,6 +11,6 @@ public class RestCompanyInfoService {
    private final RestTemplateClient restTemplateClient;
 
     public CompanyInfoDTO getCompanyInfo(String symbol) {
-        return restTemplateClient.getCompanyProfileInfo(symbol);
+        return restTemplateClient.fetchCompanyProfileInfo(symbol);
     }
 }

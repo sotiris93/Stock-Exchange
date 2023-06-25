@@ -34,7 +34,7 @@ public class MarketNews {
     @Column(name="source")
     private String source;
 
-    @Column(name="summary", length = 300)
+    @Column(name="summary", length = 200)
     private String summary;
 
     @Column(name="url")

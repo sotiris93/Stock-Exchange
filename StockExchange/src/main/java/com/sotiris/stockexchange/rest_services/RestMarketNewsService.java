@@ -14,6 +14,6 @@ public class RestMarketNewsService {
     private final RestTemplateClient restTemplateClient;
 
     public List<MarketNewsDTO> getNews() {
-        return restTemplateClient.showMarketNews();
+        return restTemplateClient.fetchMarketNews();
     }
 }

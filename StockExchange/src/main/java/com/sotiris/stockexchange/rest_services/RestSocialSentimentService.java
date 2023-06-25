@@ -5,14 +5,12 @@ import com.sotiris.stockexchange.dtos.finnhub.social_sentiment.SocialSentimentRe
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @RequiredArgsConstructor
 @Service
 public class RestSocialSentimentService {
     private final RestTemplateClient restTemplateClient;
 
     public SocialSentimentResponseDTO getSocialSentiment(String symbol) {
-        return restTemplateClient.showSocialSentiment(symbol);
+        return restTemplateClient.fetchSocialSentiment(symbol);
     }
 }

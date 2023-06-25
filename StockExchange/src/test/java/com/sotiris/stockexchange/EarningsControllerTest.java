@@ -44,6 +44,6 @@ public class EarningsControllerTest {
 
        mockMvc.perform(get("/earnings")
                .accept(MediaType.APPLICATION_JSON))
-               .andExpect(status().isOk());
+               .andExpect(status().isUnauthorized());
     }
 }

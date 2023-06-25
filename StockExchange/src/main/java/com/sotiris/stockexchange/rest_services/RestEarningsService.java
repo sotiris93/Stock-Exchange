@@ -14,6 +14,6 @@ public class RestEarningsService {
     private final RestTemplateClient restTemplateClient;
 
     public List<EarningsDTO> getEarnings(String symbol) {
-        return restTemplateClient.getEarnings(symbol);
+        return restTemplateClient.fetchEarnings(symbol);
     }
 }

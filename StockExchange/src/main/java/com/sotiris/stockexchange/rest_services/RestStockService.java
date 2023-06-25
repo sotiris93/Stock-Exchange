@@ -25,11 +25,11 @@ public class RestStockService {
     private final RestTemplateClient restTemplateClient;
 
     public List<StockSymbolDTO> getStocks() {
-        return restTemplateClient.getStocks();
+        return restTemplateClient.fetchStocks();
     }
 
     public StockSymbolDTO getStockByName(String stock) {
-        List<StockSymbolDTO> stocks = restTemplateClient.getStocks();
+        List<StockSymbolDTO> stocks = restTemplateClient.fetchStocks();
         for (StockSymbolDTO currentStock : stocks) {
             if (currentStock.description().equals(stock)) {
                 return currentStock;
@@ -43,7 +43,7 @@ public class RestStockService {
 
 
     public List<String> getStocksInAlphabeticalOrder() {
-        List<StockSymbolDTO> stocks = restTemplateClient.getStocks();
+        List<StockSymbolDTO> stocks = restTemplateClient.fetchStocks();
         List<String> sortedStocks = new ArrayList<>();
 
 
@@ -58,7 +58,7 @@ public class RestStockService {
 
     public List<StockSymbolDTO> getStocksByType(String stockSymbol) {
         List<StockSymbolDTO> listOfTypes = new ArrayList<>();
-        List<StockSymbolDTO> stocks = restTemplateClient.getStocks();
+        List<StockSymbolDTO> stocks = restTemplateClient.fetchStocks();
         for (StockSymbolDTO stock : stocks) {
             if (stock.type().equals(stockSymbol)) {
                 listOfTypes.add(stock);
@@ -74,7 +74,7 @@ public class RestStockService {
     public Map<String, String> getDescriptionAndTickerList() {
         Map<String, String> tickerAndDescription = new TreeMap<>();
 
-        for (StockSymbolDTO stock : restTemplateClient.getStocks()) {
+        for (StockSymbolDTO stock : restTemplateClient.fetchStocks()) {
             if (!stock.description().matches("^\\s*"))
                 tickerAndDescription.put(stock.description(), stock.symbol());
         }
@@ -84,7 +84,7 @@ public class RestStockService {
 
     public String showStockStats() {
         String stats = "";
-        List<StockSymbolDTO> stocks = restTemplateClient.getStocks();
+        List<StockSymbolDTO> stocks = restTemplateClient.fetchStocks();
         Set<String> setOfStockTypes = new HashSet<>();
         Map<String, Integer> apparitionOfEachStockType = new TreeMap<>();
         int totalStocks = getNumberOfAllStocks();
@@ -109,7 +109,7 @@ public class RestStockService {
     }
 
     public List<MarketNewsDTO> getMarketNews() {
-        return restTemplateClient.showMarketNews();
+        return restTemplateClient.fetchMarketNews();
     }
 
     public String getMarketHeadlines() {
@@ -123,12 +123,12 @@ public class RestStockService {
     }
 
     public List<RecommendationTrendsDTO> getRecommendationTrends() {
-        return restTemplateClient.showRecommendations();
+        return restTemplateClient.fetchRecommendations();
     }
 
 
     public List<InsiderTransactionsDTO> getInsiderTransactions() {
-        return restTemplateClient.showInsiderTransactions();
+        return restTemplateClient.fetchInsiderTransactions();
     }
 
     public FinancialsDTO getFinancialsAdReported() {
@@ -136,23 +136,23 @@ public class RestStockService {
     }
 
     public List<FilingsDTO> getFilings() {
-        return restTemplateClient.showFilings();
+        return restTemplateClient.fetchFilings();
     }
 
     public SocialSentimentResponseDTO getSocialSentiment(String symbol) {
-        return restTemplateClient.showSocialSentiment(symbol);
+        return restTemplateClient.fetchSocialSentiment(symbol);
     }
 
     public List<USPTOCompanyPatentsDTO> getUSPTOPatents() {
-        return restTemplateClient.showUSPTOCompanyPatents();
+        return restTemplateClient.fetchUSPTOCompanyPatents();
     }
 
     public List<USPTOCompanyPatentsDTO> getUSASpendingActivities(){
-        return restTemplateClient.showUSASpendingActivities();
+        return restTemplateClient.fetchUSASpendingActivities();
     }
 
     public List<CountriesMetadataDTO> getCountriesMetadata(){
-        return restTemplateClient.showCountriesMetadata();
+        return restTemplateClient.fetchCountriesMetadata();
     }
 
 

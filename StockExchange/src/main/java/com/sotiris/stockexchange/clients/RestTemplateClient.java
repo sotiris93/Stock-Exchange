@@ -41,7 +41,7 @@ public class RestTemplateClient {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public List<StockSymbolDTO> getStocks() {
+    public List<StockSymbolDTO> fetchStocks() {
         String url = "https://finnhub.io/api/v1/stock/symbol";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -66,7 +66,7 @@ public class RestTemplateClient {
         return response.getBody() == null ? Collections.emptyList() : List.of(response.getBody());
     }
 
-    public CompanyInfoDTO getCompanyProfileInfo(String symbol) {
+    public CompanyInfoDTO fetchCompanyProfileInfo(String symbol) {
         String url = "https://finnhub.io/api/v1/stock/profile2";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -91,7 +91,7 @@ public class RestTemplateClient {
 
     }
 
-    public List<MarketNewsDTO> showMarketNews() {
+    public List<MarketNewsDTO> fetchMarketNews() {
         String url = "https://finnhub.io/api/v1/news?category=general";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -118,7 +118,7 @@ public class RestTemplateClient {
         return response.getBody() == null ? Collections.emptyList() : List.of(response.getBody());
     }
 
-    public List<RecommendationTrendsDTO> showRecommendations() {
+    public List<RecommendationTrendsDTO> fetchRecommendations() {
         String url = "https://finnhub.io/api/v1/stock/recommendation";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -146,7 +146,7 @@ public class RestTemplateClient {
         return response.getBody() == null ? Collections.emptyList() : List.of(response.getBody());
     }
 
-    public List<EarningsDTO> getEarnings(String symbol) {
+    public List<EarningsDTO> fetchEarnings(String symbol) {
 
         String url = "https://finnhub.io/api/v1/calendar/earnings";
         HttpHeaders headers = new HttpHeaders();
@@ -173,7 +173,7 @@ public class RestTemplateClient {
 
 
 
-    public List<InsiderTransactionsDTO> showInsiderTransactions() {
+    public List<InsiderTransactionsDTO> fetchInsiderTransactions() {
         String url = "https://finnhub.io/api/v1/stock/insider-transactions";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -221,7 +221,7 @@ public class RestTemplateClient {
 
 
 
-    public List<FilingsDTO> showFilings() {
+    public List<FilingsDTO> fetchFilings() {
         String url = "https://finnhub.io/api/v1/stock/filings";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -244,7 +244,7 @@ public class RestTemplateClient {
     }
 
 
-    public SocialSentimentResponseDTO showSocialSentiment(String symbol) {
+    public SocialSentimentResponseDTO fetchSocialSentiment(String symbol) {
         String url = "https://finnhub.io/api/v1/stock/social-sentiment";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -269,7 +269,7 @@ public class RestTemplateClient {
 
 
 
-    public List<USPTOCompanyPatentsDTO> showUSPTOCompanyPatents() { // PROVLIMA STO PEDIO COMPANYFILINGNAME
+    public List<USPTOCompanyPatentsDTO> fetchUSPTOCompanyPatents() { // PROVLIMA STO PEDIO COMPANYFILINGNAME
         String url = "https://finnhub.io/api/v1//stock/uspto-patent?symbol=NVDA&from=2021-01-01&to="+today;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -301,7 +301,7 @@ public class RestTemplateClient {
     This dataset can help you identify companies that win big government contracts which
      is extremely important for industries such as Defense, Aerospace, and Education.
      */
-    public List<USPTOCompanyPatentsDTO> showUSASpendingActivities() { // OLA NULL
+    public List<USPTOCompanyPatentsDTO> fetchUSASpendingActivities() { // OLA NULL
         String url = "https://finnhub.io/api/v1/stock/usa-spending?symbol=AAPL&from=2021-01-01&to="+today;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -328,7 +328,7 @@ public class RestTemplateClient {
         return response.getBody() == null ? Collections.emptyList() : List.of(response.getBody());
     }
 
-    public List<CountriesMetadataDTO> showCountriesMetadata() {
+    public List<CountriesMetadataDTO> fetchCountriesMetadata() {
         String url = "https://finnhub.io/api/v1/country";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
