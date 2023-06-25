@@ -1,13 +1,13 @@
-package com.sotiris.stockexchange;
-
-import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsDTO;
-import com.sotiris.stockexchange.rest_services.*;
-import com.sotiris.stockexchange.services.*;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
+//package com.sotiris.stockexchange;
+//
+//import com.sotiris.stockexchange.dtos.finnhub.financials.FinancialsDTO;
+//import com.sotiris.stockexchange.rest_services.*;
+//import com.sotiris.stockexchange.services.*;
+//import lombok.RequiredArgsConstructor;
+//import lombok.extern.slf4j.Slf4j;
+//import org.springframework.boot.ApplicationArguments;
+//import org.springframework.boot.ApplicationRunner;
+//import org.springframework.stereotype.Component;
 
 //@Component
 //@RequiredArgsConstructor

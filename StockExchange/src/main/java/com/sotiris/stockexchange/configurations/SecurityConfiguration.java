@@ -37,7 +37,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(requests -> requests
-//                .requestMatchers("companies/earnings").authenticated()
+                .requestMatchers("companies/earnings").authenticated()
                 .anyRequest().permitAll()
         );
         httpSecurity.httpBasic();
