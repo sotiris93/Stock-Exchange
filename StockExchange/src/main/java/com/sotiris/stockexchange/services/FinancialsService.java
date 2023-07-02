@@ -45,5 +45,4 @@ public class FinancialsService {
         }
         return financialsDTOS;
     }
-
 }

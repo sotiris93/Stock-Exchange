@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -109,7 +110,7 @@ public class StockController {
 
     @GetMapping("/patents")
     public ResponseEntity<List<USPTOCompanyPatentsDTO>> getUSPTOPatents() {
-        return ResponseEntity.ok(restStockService.getUSPTOPatents());
+        return ResponseEntity.ok(Collections.singletonList(restStockService.getUSPTOPatents()));
     }
 
     @GetMapping("/USASpendingActivities")

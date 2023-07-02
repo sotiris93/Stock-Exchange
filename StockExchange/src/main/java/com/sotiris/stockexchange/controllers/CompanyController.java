@@ -32,7 +32,7 @@ public class CompanyController {
     }
 
     @GetMapping("/earnings")
-    public ResponseEntity<CompanyInfoDTO> getCompanyInfo(@RequestParam String symbol) {
+    public ResponseEntity<CompanyInfoDTO> getCompanyInfo(@RequestParam(required = false) String symbol) {
         return ResponseEntity.ok(restCompanyInfoService.getCompanyInfo(symbol));
     }
 

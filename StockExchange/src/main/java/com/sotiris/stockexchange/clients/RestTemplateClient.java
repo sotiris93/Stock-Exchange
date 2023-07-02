@@ -269,7 +269,7 @@ public class RestTemplateClient {
 
 
 
-    public List<USPTOCompanyPatentsDTO> fetchUSPTOCompanyPatents() { 
+    public USPTOCompanyPatentsDTO fetchUSPTOCompanyPatents() { // PROVLIMA STO PEDIO COMPANYFILINGNAME
         String url = "https://finnhub.io/api/v1//stock/uspto-patent?symbol=NVDA&from=2021-01-01&to="+today;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -277,7 +277,6 @@ public class RestTemplateClient {
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(url)
-                .queryParam("symbol", "{symbol}")
                 .encode()
                 .toUriString();
 
@@ -293,7 +292,7 @@ public class RestTemplateClient {
         );
 
         System.out.println(response.getBody());
-        return response.getBody() == null ? Collections.emptyList() : List.of(response.getBody());
+        return response.getBody();
     }
 
 
@@ -301,7 +300,7 @@ public class RestTemplateClient {
     This dataset can help you identify companies that win big government contracts which
      is extremely important for industries such as Defense, Aerospace, and Education.
      */
-    public List<USPTOCompanyPatentsDTO> fetchUSASpendingActivities() {
+    public List<USPTOCompanyPatentsDTO> fetchUSASpendingActivities() { // OLA NULL
         String url = "https://finnhub.io/api/v1/stock/usa-spending?symbol=AAPL&from=2021-01-01&to="+today;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

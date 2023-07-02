@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RestCompanyInfoService {
-   private final RestTemplateClient restTemplateClient;
+    private final RestTemplateClient restTemplateClient;
 
     public CompanyInfoDTO getCompanyInfo(String symbol) {
+        if (symbol == null || symbol.isBlank()) {
+            throw new IllegalArgumentException();
+        }
         return restTemplateClient.fetchCompanyProfileInfo(symbol);
     }
 }

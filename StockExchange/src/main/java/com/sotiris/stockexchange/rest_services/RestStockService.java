@@ -143,7 +143,7 @@ public class RestStockService {
         return restTemplateClient.fetchSocialSentiment(symbol);
     }
 
-    public List<USPTOCompanyPatentsDTO> getUSPTOPatents() {
+    public USPTOCompanyPatentsDTO getUSPTOPatents() {
         return restTemplateClient.fetchUSPTOCompanyPatents();
     }
 
