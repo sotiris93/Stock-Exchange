@@ -32,8 +32,6 @@ public class SecurityConfiguration {
         this.dataSource = dataSource;
     }
 
-
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(requests -> requests
@@ -43,24 +41,6 @@ public class SecurityConfiguration {
         httpSecurity.httpBasic();
         return httpSecurity.build();
     }
-
-//    @Bean
-//    public UserDetailsService userDetailsService(){
-//
-//        UserDetails ramesh = User.builder()
-//                .username("ramesh")
-//                .password(passwordEncoder().encode("password"))
-//                .roles("USER")
-//                .build();
-//
-//        UserDetails admin = User.builder()
-//                .username("admin")
-//                .password(passwordEncoder().encode("adminPassword"))
-//                .roles("ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(ramesh, admin);
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){

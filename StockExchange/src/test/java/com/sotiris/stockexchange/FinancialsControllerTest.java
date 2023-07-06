@@ -27,10 +27,10 @@ public class FinancialsControllerTest {
     MockMvc mockMvc;
 
     @MockBean
-    FinancialsService financialsService;
+    private FinancialsService financialsService;
 
     @MockBean
-    RestFinancialsService restFinancialsService;
+    private RestFinancialsService restFinancialsService;
 
     @Test
     void should_return_all_financials() throws Exception {

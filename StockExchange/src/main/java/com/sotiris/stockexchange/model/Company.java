@@ -2,9 +2,7 @@ package com.sotiris.stockexchange.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 
 @Entity
@@ -12,8 +10,9 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Getter
+@Builder
+@EqualsAndHashCode
 public class Company {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

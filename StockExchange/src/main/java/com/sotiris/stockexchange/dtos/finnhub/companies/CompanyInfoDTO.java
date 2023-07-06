@@ -1,5 +1,8 @@
 package com.sotiris.stockexchange.dtos.finnhub.companies;
 
+import lombok.Builder;
+
+@Builder
 public record CompanyInfoDTO(
         String country,
         String currency,
