@@ -10,13 +10,18 @@ import java.util.List;
 @Repository
 public interface FilingsRepository extends JpaRepository<Filings, Long> {
 
-    @Query(value = "SELECT * FROM filings WHERE symbol <> '' ORDER BY symbol ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM filings WHERE symbol <> '' ORDER BY symbol", nativeQuery = true)
     List<Filings> showFilingsBySymbol(); //excluding blank symbol values
 
     @Query(value = "SELECT report_url FROM filings", nativeQuery = true)
-    List<Filings> showAllXMLDocuments(); //ERROR
+    List<String> showAllXMLDocuments();
 
-    @Query(value = "SELECT * FROM filings WHERE reportUrl like '%.html' OR reportUrl" +
+    @Query(value = "SELECT * FROM filings WHERE report_url like '%.html' OR report_url " +
             "LIKE '%.htm'", nativeQuery = true)
-    List<Filings> showAllHTMLDocuments(); //ERROR
+    List<Filings> showAllHTMLDocuments();
+
+    @Query(value = "SELECT f from Filings f")
+    List<Filings> findAllUsingJPQL();
 }
+
+

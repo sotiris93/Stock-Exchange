@@ -1,15 +1,14 @@
 package com.sotiris.stockexchange.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "financials_data")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 public class FinancialsData {
 
     @Id
@@ -17,6 +16,7 @@ public class FinancialsData {
     @Column(name = "id")
     Long id;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name = "financials_id")
     private Financials financials;

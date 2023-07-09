@@ -41,4 +41,9 @@ public class CompanyController {
         return ResponseEntity.ok(new CompanyInfoWithEarningsDTO(restCompanyInfoService.getCompanyInfo(symbol), restEarningsService.getEarnings(symbol)));
     }
 
+    @GetMapping("/is-greater-than-zero")
+    public ResponseEntity<Boolean> isGreaterThanZero() {
+        return ResponseEntity.ok(companyService.isCompanyCountGreaterThanZero());
+    }
+
 }

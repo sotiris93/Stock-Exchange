@@ -1,9 +1,7 @@
 package com.sotiris.stockexchange.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "financials")
 @Getter
+@Builder
 public class Financials {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +20,7 @@ public class Financials {
     @Column(name = "cik")
     private String cik;
 
+    @Setter
     @OneToMany(mappedBy = "financials", cascade = CascadeType.ALL)
     private List<FinancialsData> financialsData;
 
@@ -32,4 +32,6 @@ public class Financials {
         this.financialsData = financialsData;
         this.symbol = symbol;
     }
+
+
 }

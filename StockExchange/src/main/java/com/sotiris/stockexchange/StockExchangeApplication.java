@@ -12,5 +12,4 @@ public class StockExchangeApplication {
     public static void main(String[] args) {
         SpringApplication.run(StockExchangeApplication.class, args);
     }
-
 }

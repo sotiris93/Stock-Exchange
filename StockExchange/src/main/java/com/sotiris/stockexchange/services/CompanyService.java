@@ -31,4 +31,8 @@ public class CompanyService {
                 companyInfoDTO.ipo(), companyInfoDTO.logo(), companyInfoDTO.marketCapitalization(), companyInfoDTO.name(), companyInfoDTO.phone(), companyInfoDTO.shareOutstanding(),
                 companyInfoDTO.ticker(), companyInfoDTO.weburl()));
     }
+
+    public boolean isCompanyCountGreaterThanZero() {
+        return companyRepository.count() > 0;
+    }
 }

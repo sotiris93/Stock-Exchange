@@ -30,12 +30,17 @@ public class FilingsController {
     }
 
     @GetMapping("/XML-documents")
-    public ResponseEntity<List<Filings>> getXMLDocuments() {
-        return ResponseEntity.ok(filingsRepository.showAllXMLDocuments()); // ERROR
+    public ResponseEntity<List<String>> getXMLDocuments() {
+        return ResponseEntity.ok(filingsRepository.showAllXMLDocuments());
     }
 
     @GetMapping("/HTML-documents")
     public ResponseEntity<List<Filings>> getHTMLDocuments() {
-        return ResponseEntity.ok(filingsRepository.showAllHTMLDocuments()); //ERROR
+        return ResponseEntity.ok(filingsRepository.showAllHTMLDocuments());
+    }
+
+    @GetMapping("/filingsUsingJPQL")
+    public ResponseEntity<List<Filings>> getFilingsUsingJPQL() {
+        return ResponseEntity.ok(filingsRepository.findAllUsingJPQL());
     }
 }

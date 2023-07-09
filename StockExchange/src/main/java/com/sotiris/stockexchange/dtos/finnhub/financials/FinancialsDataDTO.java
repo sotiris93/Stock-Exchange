@@ -1,5 +1,8 @@
 package com.sotiris.stockexchange.dtos.finnhub.financials;
 
+import lombok.Builder;
+
+@Builder
 public record FinancialsDataDTO(
         String accessNumber,
         String symbol,
